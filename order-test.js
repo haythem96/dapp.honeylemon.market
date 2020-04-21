@@ -49,7 +49,7 @@ const makerAmountToMint = 1000; // TH of mining over a 1 month duration sold by 
 const takerAmountToMint = 40000 * paymentDecimals; // USDC sent from investor to miner. $4 ~ 1 month of 1TH mining rewards @ btc = 7k
 
 // Config:
-const REAL_INPUT = true;
+const REAL_INPUT = true; // if data should be pulled from the payout-calculator that has sample data in it or if easy input numbers for MIR should be used
 
 const NULL_ADDRESS = '0x0000000000000000000000000000000000000000';
 
@@ -209,7 +209,6 @@ async function runExport() {
   const takerAssetData = await contractWrappers.devUtils
     .encodeERC20AssetData(takerToken.address)
     .callAsync();
-  console.log('specs', contractSpecs[1].toString());
   console.table({
     'Maker trade amount(TH)': {
       Amount: makerAmountToMint,
